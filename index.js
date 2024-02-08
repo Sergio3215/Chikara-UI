@@ -1,81 +1,64 @@
 'use client'
 import { useEffect, useState } from "react";
 import { NeuralNetwork } from "./brain"
-var net = new NeuralNetwork();
+let net = new NeuralNetwork();
 
 net.train([
-  { input: { r: 0, g: 0, b: 0 }, output: { color: 1 } },
-  { input: { r: 1, g: 1, b: 1 }, output: { color: 0 } },
-  { input: { r: 0, g: 1, b: 0 }, output: { color: 0 } },
-  { input: { r: 0.5, g: 0.5, b: 1.0 }, output: { color: 0 } },
-  { input: { r: 0, g: 0.43, b: 1 }, output: { color: 1 } },
-  { input: { r: 1, g: 0, b: 0 }, output: { color: 1 } }
+    { input: { r: 0, g: 0, b: 0 }, output: { color: 1 } },
+    { input: { r: 1, g: 1, b: 1 }, output: { color: 0 } },
+    { input: { r: 0, g: 1, b: 0 }, output: { color: 0 } },
+    { input: { r: 0.5, g: 0.5, b: 1.0 }, output: { color: 0 } },
+    { input: { r: 0, g: 0.43, b: 1 }, output: { color: 1 } },
+    { input: { r: 1, g: 0, b: 0 }, output: { color: 1 } }
 ]);
 
-var output = net.run([{ r: 1, g: 0, b: 0 }]);  // [0.987]
-
-
-// console.log(output);
-
+// var output = net.run([{ r: 1, g: 0, b: 0 }]);  // [0.987]
 
 const nombreColorARGB = (nombreColor) => {
-  try {
-    var temporalDiv = document.createElement("div");
-    temporalDiv.style.color = nombreColor;
-    document.body.appendChild(temporalDiv);
-    var colorRGB = window.getComputedStyle(temporalDiv).color;
-    document.body.removeChild(temporalDiv);
-    return colorRGB;
-  } catch (error) {
-    // console.log(error);
-    return 'rgb(150,20,0)';
-  }
+    try {
+        let temporalDiv = document.createElement("div");
+        temporalDiv.style.color = nombreColor;
+        document.body.appendChild(temporalDiv);
+        let colorRGB = window.getComputedStyle(temporalDiv).color;
+        document.body.removeChild(temporalDiv);
+        return colorRGB;
+    } catch (error) {
+        // console.log(error);
+        return 'rgb(150,20,0)';
+    }
 }
 
 function getTextColor(myColor) {
-  let color = ''
-  let rgb = myColor //nombreColorARGB(myColor)
-  rgb = rgb.replace("rgb(", "").replace(")", "");
-  rgb = rgb.split(",")
-  let entrada = {
-    r: parseInt(rgb[0]) / 255,
-    g: parseInt(rgb[1]) / 255,
-    b: parseInt(rgb[2]) / 255,
-  };
+    let color = ''
+    let rgb = myColor
+    rgb = rgb.replace("rgb(", "").replace(")", "");
+    rgb = rgb.split(",")
+    let entrada = {
+        r: parseInt(rgb[0]) / 255,
+        g: parseInt(rgb[1]) / 255,
+        b: parseInt(rgb[2]) / 255,
+    };
 
-  //Obtener la prediccion de la red
-  let resultado = net.run(entrada);
-  //console.log(resultado);
+    let resultado = net.run(entrada);
 
-  if (resultado.color > 0.5) {
-    color = "white";
-  } else {
-    color = "black";
-  }
+    if (resultado.color > 0.5) {
+        color = "white";
+    } else {
+        color = "black";
+    }
 
-//   console.log(color);
-
-  return color;
+    return color;
 }
 
-// console.log(getTextColor("rgb(123,44,22)"));
+const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, id, className }) => {
 
+    const [wordColor, setWordColor] = useState('black');
 
-
-// console.log(getTextColor(nombreColorARGB("green")));
-
-// Uso
-// console.log(nombreColorARGB("red"));
-
-const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, value }) => {
-
-    const [wordColor, setWordColor] = useState('black')
-
-    useEffect(()=>{
+    useEffect(() => {
         let lbColor = getTextColor(nombreColorARGB(bgColor));
 
         setWordColor(lbColor);
-    },[bgColor])
+    }, [bgColor]);
 
     const Styled = {
         container: {
@@ -92,7 +75,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             width: "100%",
             color: wordColor
         },
-        labelStyle:{
+        labelStyle: {
             color: wordColor,
         },
         errorMsg: {
@@ -111,7 +94,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
                     </label>
                 </div>
                 <div>
-                    <input type={type} onChange={onChange} style={Styled.inputStyle} name={name} />
+                    <input type={type} onChange={onChange} style={Styled.inputStyle} name={name} id={id} className={className} />
                 </div>
             </div>
         </>
@@ -119,6 +102,64 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
     );
 }
 
+const Title = ({ text, bgColor, id, className }) => {
+
+    const [wordColor, setWordColor] = useState('black');
+
+    useEffect(() => {
+        let lbColor = getTextColor(nombreColorARGB(bgColor));
+        setWordColor(lbColor);
+    }, [bgColor]);
+
+    return (
+        <>
+            <h1 style={{
+                color: wordColor
+            }} id={id} className={className}>
+                {text}
+            </h1>
+        </>
+    )
+}
+
+const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => {
+
+    const [wordColor, setWordColor] = useState('black');
+
+    useEffect(() => {
+        let lbColor = getTextColor(nombreColorARGB(bgColor));
+        setWordColor(lbColor);
+    }, [bgColor]);
+
+    return (
+        <>
+            <select style={{
+                color: wordColor
+            }} onChange={onChange} key={key} name={name}
+                id={id} className={className}>
+                {children}
+            </select>
+        </>
+    )
+}
+
+const Image = ({ src, alt, id, className, label }) => {
+
+    return (
+        <div>
+            <div>
+                <label>{label}</label>
+            </div>
+            <div>
+                <img src={src} alt={alt} id={id} className={className}/>
+            </div>
+        </div>
+    )
+}
+
 module.exports = {
-    Input
+    Input,
+    Title,
+    Dropdown,
+    Image
 }
