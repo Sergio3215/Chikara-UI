@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
-import { NeuralNetwork } from "../brain"
+import { NeuralNetwork } from "./brain"
 var net = new NeuralNetwork();
 
 net.train([
