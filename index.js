@@ -9,7 +9,8 @@ net.train([
     { input: { r: 0, g: 1, b: 0 }, output: { color: 0 } },
     { input: { r: 0.5, g: 0.5, b: 1.0 }, output: { color: 0 } },
     { input: { r: 0, g: 0.43, b: 1 }, output: { color: 1 } },
-    { input: { r: 1, g: 0, b: 0 }, output: { color: 1 } }
+    { input: { r: 1, g: 0, b: 0 }, output: { color: 1 } },
+    { input: { r: 0, g: 0, b: 1 }, output: { color: 1 } }
 ]);
 
 // var output = net.run([{ r: 1, g: 0, b: 0 }]);  // [0.987]
@@ -135,7 +136,7 @@ const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => 
         <>
             <select style={{
                 color: wordColor,
-                backgroundColor:bgColor,
+                backgroundColor: bgColor,
             }} onChange={onChange} key={key} name={name}
                 id={id} className={className}>
                 {children}
@@ -152,15 +153,37 @@ const Image = ({ src, alt, id, className, label }) => {
                 <label>{label}</label>
             </div>
             <div>
-                <img src={src} alt={alt} id={id} className={className}/>
+                <img src={src} alt={alt} id={id} className={className} />
             </div>
         </div>
     )
+}
+
+const Button = ({ children, className, id, onPress, onClick, bgColor }) => {
+
+    const [wordColor, setWordColor] = useState('black');
+
+    useEffect(() => {
+        let lbColor = getTextColor(nombreColorARGB(bgColor));
+        setWordColor(lbColor);
+    }, [bgColor]);
+
+    return (
+        <>
+            <button className={className} id={id} onPress={onPress} onClick={onClick} style={{
+                color: wordColor,
+                backgroundColor: bgColor,
+            }}>
+                {children}
+            </button>
+        </>
+    );
 }
 
 module.exports = {
     Input,
     Title,
     Dropdown,
-    Image
+    Image,
+    Button
 }
