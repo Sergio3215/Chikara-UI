@@ -31,6 +31,8 @@ export default function Home() {
 ```
 
 
+# 📝 Version 1.1.4
+Improve the component style
 # 📝 Version 1.1.3
 Improve the component style
 # 📝 Version 1.1.2

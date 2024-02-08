@@ -75,7 +75,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             border: "0px",
             width: "100%",
             color: wordColor,
-            borderBottom: "1px solid "+wordColor
+            borderBottom: "1px solid " + wordColor
         },
         labelStyle: {
             color: wordColor,
@@ -96,7 +96,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
                     </label>
                 </div>
                 <div>
-                    <input type={type} onChange={onChange} style={Styled.inputStyle} name={name} id={id} className={className} />
+                    <input type={type} onChange={onChange} style={Styled.inputStyle} name={name} id={id} className={className} onFocus={(e) => e.target.style.outline = "none"} />
                 </div>
             </div>
         </>
@@ -134,11 +134,11 @@ const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => 
     }, [bgColor]);
 
     const Styled = {
-        select:{
+        select: {
             color: wordColor,
             backgroundColor: bgColor,
-            padding:"12px",
-            borderRadius:"20px"
+            padding: "12px",
+            borderRadius: "20px"
         }
     }
 
@@ -176,18 +176,17 @@ const Button = ({ children, className, id, onPress, onClick, bgColor }) => {
     }, [bgColor]);
 
     const Styled = {
-        btn:{
-            padding:"12px",
-            borderRadius:"10px"
+        btn: {
+            padding: "12px",
+            borderRadius: "10px",
+            color: wordColor,
+            backgroundColor: bgColor,
         }
     }
 
     return (
         <>
-            <button className={className} id={id} onPress={onPress} onClick={onClick} style={{
-                color: wordColor,
-                backgroundColor: bgColor,
-            }}>
+            <button className={className} id={id} onPress={onPress} onClick={onClick} style={Styled.btn}>
                 {children}
             </button>
         </>
