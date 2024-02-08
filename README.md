@@ -31,5 +31,17 @@ export default function Home() {
 ```
 
 
-# 📝 Version 1.0.8
+# 📝 Version 1.1.0
+Improve the component Dropdown Style
+# <s>📝 Version 1.0.9 </s>
+Adding components Title, Dropdown and Image
+# <s>📝 Version 1.0.8 </s>
 In this version, only i add Input, but in the lastest version i am going to add another tags with an improve style.
+# <s>📝 Version 1.0.7 </s>
+Improve Naural Network
+# <s>📝 Version 1.0.6 </s>
+Adding Naural Network
+# <s>📝 Version 1.0.5 </s>
+Improve component Input
+# <s>📝 Version 1.0.4 </s>
+Adding component Input
