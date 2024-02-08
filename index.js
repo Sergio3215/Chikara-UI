@@ -134,7 +134,8 @@ const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => 
     return (
         <>
             <select style={{
-                color: wordColor
+                color: wordColor,
+                backgroundColor:bgColor,
             }} onChange={onChange} key={key} name={name}
                 id={id} className={className}>
                 {children}
