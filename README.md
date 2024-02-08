@@ -31,13 +31,15 @@ export default function Home() {
 ```
 
 
-# 📝 Version 1.1.4
+# 📝 Version 1.1.5
 Improve the component style
-# 📝 Version 1.1.3
+# <s>📝 Version 1.1.4 </s>
 Improve the component style
-# 📝 Version 1.1.2
+# <s>📝 Version 1.1.3 </s>
+Improve the component style
+# <s>📝 Version 1.1.2 </s>
 Adding Button Component
-# 📝 Version 1.1.0
+# <s>📝 Version 1.1.0 </s>
 Improve the component Dropdown Style
 # <s>📝 Version 1.0.9 </s>
 Adding components Title, Dropdown and Image

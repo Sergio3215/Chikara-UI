@@ -75,7 +75,8 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             border: "0px",
             width: "100%",
             color: wordColor,
-            borderBottom: "1px solid " + wordColor
+            borderBottom: "1px solid #00000091",
+            opacity: 0.5
         },
         labelStyle: {
             color: wordColor,
@@ -96,7 +97,15 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
                     </label>
                 </div>
                 <div>
-                    <input type={type} onChange={onChange} style={Styled.inputStyle} name={name} id={id} className={className} onFocus={(e) => e.target.style.outline = "none"} />
+                    <input type={type} onChange={onChange} style={Styled.inputStyle} name={name} id={id} className={className}
+                        onFocus={(e) => {
+                            e.target.style.outline = "none";
+                            e.target.style.opacity = "1";
+                            e.target.style.borderColor = wordColor
+                        }} onBlur={(e) => {
+                            e.target.style.borderColor = '#00000091';
+                            e.target.style.opacity = "0.5";
+                        }} />
                 </div>
             </div>
         </>
