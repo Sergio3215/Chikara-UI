@@ -27,7 +27,7 @@ const nombreColorARGB = (nombreColor) => {
     document.body.removeChild(temporalDiv);
     return colorRGB;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return 'rgb(150,20,0)';
   }
 }
@@ -53,12 +53,12 @@ function getTextColor(myColor) {
     color = "black";
   }
 
-  console.log(color);
+//   console.log(color);
 
   return color;
 }
 
-console.log(getTextColor("rgb(123,44,22)"));
+// console.log(getTextColor("rgb(123,44,22)"));
 
 
 
