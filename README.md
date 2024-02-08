@@ -31,6 +31,10 @@ export default function Home() {
 ```
 
 
+# 📝 Version 1.1.3
+Improve the component style
+# 📝 Version 1.1.2
+Adding Button Component
 # 📝 Version 1.1.0
 Improve the component Dropdown Style
 # <s>📝 Version 1.0.9 </s>

@@ -74,7 +74,8 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             backgroundColor: "transparent",
             border: "0px",
             width: "100%",
-            color: wordColor
+            color: wordColor,
+            borderBottom: "1px solid "+wordColor
         },
         labelStyle: {
             color: wordColor,
@@ -132,12 +133,18 @@ const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => 
         setWordColor(lbColor);
     }, [bgColor]);
 
+    const Styled = {
+        select:{
+            color: wordColor,
+            backgroundColor: bgColor,
+            padding:"12px",
+            borderRadius:"20px"
+        }
+    }
+
     return (
         <>
-            <select style={{
-                color: wordColor,
-                backgroundColor: bgColor,
-            }} onChange={onChange} key={key} name={name}
+            <select style={Styled.select} onChange={onChange} key={key} name={name}
                 id={id} className={className}>
                 {children}
             </select>
@@ -167,6 +174,13 @@ const Button = ({ children, className, id, onPress, onClick, bgColor }) => {
         let lbColor = getTextColor(nombreColorARGB(bgColor));
         setWordColor(lbColor);
     }, [bgColor]);
+
+    const Styled = {
+        btn:{
+            padding:"12px",
+            borderRadius:"10px"
+        }
+    }
 
     return (
         <>
