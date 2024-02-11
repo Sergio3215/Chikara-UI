@@ -148,8 +148,11 @@ export default function Home() {
 }
 ```
 
-# 📝 Version 1.1.7
-### Add follow components:
+# 📝 Version 1.1.8
+ ### Update Documentation
+ <br/>
+
+# <s>📝 Version 1.1.7 </s>
  ### Update Documentation
  <br/>
  
