@@ -148,7 +148,89 @@ export default function Home() {
 }
 ```
 
-# 📝 Version 1.1.8
+### Modal
+
+The properties for Modal is:<br/>
+<b>isOpen: it is a boolean, it is for do visible or hide the modal</b><br/>
+<b>autoScroll: it is a boolean, it is for when you use the component Main</b><br/>
+<b>className: You can add the className</b><br/>
+<b>id: You can add the id</b><br/>
+
+```js
+import { useState } from "react"
+
+import { Input, Button, Divider, Modal, ModalContainer, ModalHeader, ModalBody, ModalFooter, Main } from 'chikara-ui';
+
+export default function Home() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Main>
+      Click here for more information
+      <Button bgColor="rgb(12,99,99)" onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal isOpen={isOpen} autoScroll={true}>
+        <ModalContainer onClick={() => setIsOpen(false)}>
+
+          <ModalHeader>My Header</ModalHeader>
+          <Divider />
+
+          <ModalBody>
+            <Input type="text" label={"Nombre"} bgColor={"red"} />
+            <Input type="text" label={"Apellido"} bgColor={"red"} />
+            <Input type="number" label={"Edad"} bgColor={"red"} />
+            <Input type="email" label={"Email"} bgColor={"red"} />
+            <Input type="password" label={"Contraseña"} bgColor={"red"} />
+          </ModalBody>
+
+          <ModalFooter>
+            <Button bgColor="rgba(255,0,0,0.4)" onClick={() => setIsOpen(false)}>Close</Button>
+            <Button bgColor="rgba(0,205,0,0.4)" onClick={() => setIsOpen(false)}>Save</Button>
+          </ModalFooter>
+
+        </ModalContainer>
+      </Modal>
+    </Main>
+  );
+}
+```
+
+### Main
+
+The properties for Main is:<br/>
+<b>className: You can add the className</b><br/>
+<b>id: You can add the id</b><br/>
+
+```js
+import { Main } from 'chikara-ui';
+
+export default function Home() {
+
+  return (
+    <Main>
+      Click here for more information
+    </Main>
+  );
+}
+```
+
+# 📝 Version 1.1.9
+### Add follow components:
+ #### Modal
+ #### ModalContainer
+ #### ModalHeader
+ #### ModalBody
+ #### ModalFooter
+ #### Main
+### Improve the Input component style
+### Improve the Divider component style
+> **_NOTE:_** Sketch P5 have a minor bug, we are working for fix this one.
+ <br/>
+
+
+ <br/>
+ 
+# <s>📝 Version 1.1.8 </s>
  ### Update Documentation
  <br/>
 

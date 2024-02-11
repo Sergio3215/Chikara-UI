@@ -11,20 +11,18 @@ function Sketch({ sketch, style, id, className }) {
     let sketchRef = createRef();
 
     useEffect(() => {
-        try {
+        if (canvas !== null) {
             canvas.remove();
-            canvas = new p5(sketch, sketchRef.current);
-        } catch (error) {
-            canvas = new p5(sketch, sketchRef.current);
         }
+        canvas = new p5(sketch, sketchRef.current);
     }, []);
 
 
-    return(
+    return (
         <div ref={sketchRef}
-        style={style}
-        id={id}
-        className={className}
+            style={style}
+            id={id}
+            className={className}
         ></div>
     )
 }

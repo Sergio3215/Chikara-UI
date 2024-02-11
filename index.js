@@ -77,6 +77,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             minWidth: "200px",
             maxWidth: "450px",
             maxHeight: "76px",
+            margin: "10px"
         },
         inputStyle: {
             backgroundColor: "transparent",
@@ -84,7 +85,8 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             width: "100%",
             color: wordColor,
             borderBottom: "1px solid #00000091",
-            opacity: 0.5
+            opacity: 0.5,
+            textAlign: "center"
         },
         labelStyle: {
             color: wordColor,
@@ -219,13 +221,166 @@ const Button = ({ children, className, id, onPress, onClick, bgColor }) => {
     );
 }
 
-const Divider = ({width})=>{
+const Divider = ({ width }) => {
     return <hr style={{
-        width: width || "50%",
-        margin:"15px"
-    }}/>;
+        width: width || "95%",
+        margin: "15px",
+    }} />;
 }
 
+const Modal = ({ children, isOpen, className, autoScroll }) => {
+
+    const [w, setW] = useState('100%');
+    const [h, setH] = useState('100%');
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setScroll();
+        })
+
+    }, []);
+
+
+    const setScroll = () => {
+        try {
+            if(autoScroll){
+                document.querySelector('#modal').style.transform = `translate(0px, ${scrollY}px)`;
+            }
+
+            setH(innerHeight);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        if (isOpen) {
+            setScroll();
+
+            window.addEventListener('scroll', () => {
+                setScroll();
+            })
+
+        }
+    }, [isOpen])
+
+
+    return (
+        <>
+            {
+                isOpen ?
+                    <div style={{
+                        position: "absolute",
+                        backgroundColor: "rgba(5, 5, 5, 0.8)",
+                        width: w,
+                        height: h,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }} id="modal" className={className}>
+                        {children}
+                    </div>
+                    :
+                    <></>
+            }
+        </>
+    )
+}
+
+const ModalContainer = ({ children, bgColor, onClick }) => {
+
+    const [wordColor, setWordColor] = useState('black');
+
+    useEffect(() => {
+        let lbColor = getTextColor(nombreColorARGB(bgColor || "rgb(255, 255, 255)"));
+        setWordColor(lbColor);
+    }, [bgColor]);
+
+    return (
+        <>
+            <div style={{
+                border: "1px solid" + bgColor || "rgb(255, 255, 255)",
+                borderRadius: "10px",
+                backgroundColor: bgColor || "rgb(255, 255, 255)",
+                color: wordColor,
+                margin: "35px",
+                padding: "25px",
+                textAlign: "center",
+                width: "30%",
+            }}>
+
+                <div style={{
+                    textAlign: "right",
+                    cursor: "pointer",
+                    padding: "2px",
+                    maxWidth: "40px",
+                    position: "relative",
+                    left: "82%",
+                    top: "-10px"
+                }} onClick={onClick}>
+                    X
+                </div>
+                {children}
+            </div>
+        </>
+    )
+}
+
+const ModalHeader = ({ children }) => {
+    return (
+        <div style={{
+            margin: "10px",
+            marginRight: "0px",
+            marginTop: "0px",
+        }}>
+            <div style={{
+                textAlign: "center",
+                position: "relative",
+                top: "-18px"
+            }}>
+                {children}
+            </div>
+        </div>
+    )
+}
+
+const ModalBody = ({ children }) => {
+    return (
+        <div style={{
+            margin: "20px"
+        }}>
+            {children}
+        </div>
+    )
+}
+
+const ModalFooter = ({ children }) => {
+    return (
+        <div style={{
+            marginTop: "10px"
+        }}>
+            {children}
+        </div>
+    )
+}
+
+const Main = ({children, className, id}) => {
+
+    const Styled = {
+        mainStyle : {
+        display: "flex",
+            flexDirection:"column",
+            minHeight: "100vh",
+            alignItems: "center",
+        }
+    }
+
+    return(
+        <main style={Styled.mainStyle} className={className} id={id}>
+            {children}
+        </main>
+    );
+}
 
 module.exports = {
     Input,
@@ -234,5 +389,10 @@ module.exports = {
     Image,
     Button,
     Divider,
-
+    Modal,
+    ModalContainer,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Main
 }
