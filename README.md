@@ -30,26 +30,34 @@ export default function Home() {
 }
 ```
 
+# 📝 Version 1.1.6
+### Add follow components:
+ #### Divider
+ #### Sketch (P5)
 
-# 📝 Version 1.1.5
-Improve the component style
+### Improve the component style
+# <s>📝 Version 1.1.5 </s>
+
+### Improve the component style
 # <s>📝 Version 1.1.4 </s>
-Improve the component style
+
+### Improve the component style
 # <s>📝 Version 1.1.3 </s>
-Improve the component style
+
+### Improve the component style
 # <s>📝 Version 1.1.2 </s>
-Adding Button Component
+### Adding Button Component
 # <s>📝 Version 1.1.0 </s>
-Improve the component Dropdown Style
+### Improve the component Dropdown Style
 # <s>📝 Version 1.0.9 </s>
-Adding components Title, Dropdown and Image
+### Adding components Title, Dropdown and Image
 # <s>📝 Version 1.0.8 </s>
-In this version, only i add Input, but in the lastest version i am going to add another tags with an improve style.
+### In this version, only i add Input, but in the lastest version i am going to add another tags with an improve style.
 # <s>📝 Version 1.0.7 </s>
-Improve Naural Network
+### Improve Naural Network
 # <s>📝 Version 1.0.6 </s>
-Adding Naural Network
+### Adding Naural Network
 # <s>📝 Version 1.0.5 </s>
-Improve component Input
+### Improve component Input
 # <s>📝 Version 1.0.4 </s>
-Adding component Input
+### Adding component Input

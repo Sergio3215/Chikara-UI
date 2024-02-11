@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
 import { NeuralNetwork } from "./brain"
+import p5 from 'p5';
+
 let net = new NeuralNetwork();
 
 net.train([
@@ -51,6 +53,8 @@ function getTextColor(myColor) {
     return color;
 }
 
+
+//Start Components React
 const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, id, className }) => {
 
     const [wordColor, setWordColor] = useState('black');
@@ -64,11 +68,15 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
     const Styled = {
         container: {
             borderRadius: "20px",
-            paddingLeft: "12px",
-            paddingTop: "15px",
-            paddingBottom: "15px",
+            paddingLeft: "20px",
+            paddingRight: "20px",
+            paddingTop: "5px",
+            paddingBottom: "10px",
             border: '1px solid transparent',
             backgroundColor: bgColor,
+            minWidth: "200px",
+            maxWidth: "450px",
+            maxHeight: "76px",
         },
         inputStyle: {
             backgroundColor: "transparent",
@@ -101,7 +109,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
                         onFocus={(e) => {
                             e.target.style.outline = "none";
                             e.target.style.opacity = "1";
-                            e.target.style.borderColor = wordColor
+                            e.target.style.borderColor = wordColor;
                         }} onBlur={(e) => {
                             e.target.style.borderColor = '#00000091';
                             e.target.style.opacity = "0.5";
@@ -133,7 +141,7 @@ const Title = ({ text, bgColor, id, className }) => {
     )
 }
 
-const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => {
+const Dropdown = ({ bgColor, children, onChange, name, id, className, borderRadius }) => {
 
     const [wordColor, setWordColor] = useState('black');
 
@@ -147,14 +155,17 @@ const Dropdown = ({ bgColor, children, onChange, key, name, id, className }) => 
             color: wordColor,
             backgroundColor: bgColor,
             padding: "12px",
-            borderRadius: "20px"
+            borderRadius: borderRadius
         }
     }
 
     return (
         <>
-            <select style={Styled.select} onChange={onChange} key={key} name={name}
-                id={id} className={className}>
+            <select style={Styled.select} onChange={onChange} name={name}
+                id={id} className={className}
+                onFocus={(e) => {
+                    e.target.style.outline = "none";
+                }}>
                 {children}
             </select>
         </>
@@ -187,25 +198,41 @@ const Button = ({ children, className, id, onPress, onClick, bgColor }) => {
     const Styled = {
         btn: {
             padding: "12px",
-            borderRadius: "10px",
+            borderRadius: "12px",
             color: wordColor,
             backgroundColor: bgColor,
+            margin: "15px"
         }
     }
 
     return (
         <>
-            <button className={className} id={id} onPress={onPress} onClick={onClick} style={Styled.btn}>
+            <button className={className} id={id} onPress={onPress} onClick={onClick} style={Styled.btn} onMouseOver={(e) => {
+                e.target.style.opacity = "0.9";
+            }}
+                onMouseLeave={(e) => {
+                    e.target.style.opacity = "1";
+                }}>
                 {children}
             </button>
         </>
     );
 }
 
+const Divider = ({width})=>{
+    return <hr style={{
+        width: width || "50%",
+        margin:"15px"
+    }}/>;
+}
+
+
 module.exports = {
     Input,
     Title,
     Dropdown,
     Image,
-    Button
+    Button,
+    Divider,
+
 }
