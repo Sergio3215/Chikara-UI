@@ -55,7 +55,7 @@ function getTextColor(myColor) {
 
 
 //Start Components React
-const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, id, className }) => {
+const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, id, className, textAlign }) => {
 
     const [wordColor, setWordColor] = useState('black');
 
@@ -86,7 +86,7 @@ const Input = ({ label, onChange, errorMessage, isInvalid, name, type, bgColor, 
             color: wordColor,
             borderBottom: "1px solid #00000091",
             opacity: 0.5,
-            textAlign: "center"
+            textAlign: textAlign || "left"
         },
         labelStyle: {
             color: wordColor,

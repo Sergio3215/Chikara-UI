@@ -19,6 +19,7 @@ The properties for Input, for example is:<br/>
 <b>type: It is the type of input</b><br/>
 <b>bgColor: It is for add background-color. You need add the background-color</b><br/>
 <b>onChange: You can add the event onChange</b><br/>
+<b>textAlign: Change the align of text, by default is to left</b><br/>
 
 ```js
 import {Input} from 'chikara-ui';
@@ -214,7 +215,12 @@ export default function Home() {
 }
 ```
 
-# 📝 Version 1.1.9
+# 📝 Version 1.2.0
+### Improve the Input adding new property
+> **_NOTE:_** Sketch P5 have a minor bug, we are working for fix this one.
+ <br/>
+ 
+# <s>📝 Version 1.1.9 </s>
 ### Add follow components:
  #### Modal
  #### ModalContainer
