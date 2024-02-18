@@ -4,6 +4,8 @@
 Chikara UI is a library for get automatically the font color.<br/>
 Also you can get some design about this library, where you can customize all.
 
+### **_NOTE:_** Chikara UI work in Next Js App Router. We are working for more compatibilities.
+
 # ⚙ How Install
 ```bash
 npm i chikara-ui
@@ -214,6 +216,54 @@ export default function Home() {
   );
 }
 ```
+### Dialog
+
+The properties for Dialog is:<br/>
+<b>title: It is the title of header</b><br/>
+<b>text: It is the title of body</b><br/>
+<b>lan: It is the language of button</b><br/>
+<b>onClose: It is of function for close the dialog</b><br/>
+<b>bgColor: It is for add background-color. You need add the background-color</b><br/>
+
+```js
+import { useState } from "react"
+
+import { Button, Dialog, Main } from '../../../chikara-ui/index';
+
+export default function Home() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
+
+  return (
+    <Main>
+      <Button bgColor="white" onClick={()=>{setIsOpenDialog(true)}}>Open Dialog</Button>
+
+      <Dialog isOpen={isOpenDialog} 
+        text={"Estas teniendo un problema con el  servidor, revise su conexion"}   title="header" 
+        lan="es" 
+        bgColor="white" 
+        onClose={()=>{setIsOpenDialog(false)}} 
+      />
+    </Main>
+  );
+}
+```
+
+
+# 📝 Version 1.3.0
+### Improve adding color custom on font text for:
+ #### Input
+ #### Title
+ #### Dropdown
+ #### Button
+ #### ModalContainer
+ 
+ ### Improve Naural Network
+
+ ### Add component Dialog
+
+ <br/>
 
 # 📝 Version 1.2.0
 ### Improve the Input adding new property
