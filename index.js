@@ -42,7 +42,7 @@ const nombreColorARGB = (nombreColor) => {
     }
 }
 
-function getTextColor(myColor) {
+const getTextColor = (myColor) => {
     let color = ''
     let rgb = myColor
     if (rgb.includes("rgba")) {
