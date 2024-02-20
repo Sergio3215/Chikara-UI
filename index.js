@@ -1,73 +1,11 @@
 'use client'
 import { useEffect, useState } from "react";
-import { NeuralNetwork } from "./brain";
+// import { getNameColorARGB, getColorRGB, getMonoColor } from "../../adaptive-color/index";
+import { getNameColorARGB, getColorRGB, getMonoColor } from "adaptive-color";
 
-let net = new NeuralNetwork();
+const nombreColorARGB = getNameColorARGB;
 
-net.train([
-    //black
-    { input: { r: 0, g: 0, b: 0, a: 0 }, output: { color: 0.5 } },
-    { input: { r: 0, g: 0, b: 0, a: 1 }, output: { color: 1 } },
-    //white
-    { input: { r: 1, g: 1, b: 1, a: 0 }, output: { color: 1 } },
-    { input: { r: 1, g: 1, b: 1, a: 1 }, output: { color: 0 } },
-
-    //green
-    { input: { r: 0, g: 1, b: 0, a: 1 }, output: { color: 0 } },
-
-    //red
-    { input: { r: 1, g: 0, b: 0, a: 1 }, output: { color: 1 } },
-
-    //blue
-    { input: { r: 0, g: 0, b: 1, a: 1 }, output: { color: 1 } },
-
-    //mixes
-    { input: { r: 0.5, g: 0.5, b: 1.0, a: 1 }, output: { color: 0 } },
-    { input: { r: 0, g: 0.43, b: 1, a: 1 }, output: { color: 1 } },
-]);
-
-// var output = net.run([{ r: 1, g: 0, b: 0 }]);  // [0.987]
-
-const nombreColorARGB = (nombreColor) => {
-    try {
-        let temporalDiv = document.createElement("div");
-        temporalDiv.style.color = nombreColor;
-        document.body.appendChild(temporalDiv);
-        let colorRGB = window.getComputedStyle(temporalDiv).color;
-        document.body.removeChild(temporalDiv);
-        return colorRGB;
-    } catch (error) {
-        // console.log(error);
-        return 'rgb(150,20,0)';
-    }
-}
-
-const getTextColor = (myColor) => {
-    let color = ''
-    let rgb = myColor
-    if (rgb.includes("rgba")) {
-        rgb = rgb.replace("rgba(", "").replace(")", "");
-    }
-    else {
-        rgb = rgb.replace("rgb(", "").replace(")", "");
-    }
-    rgb = rgb.split(",")
-
-    let entrada = {
-        r: parseInt(rgb[0]) / 255,
-        g: parseInt(rgb[1]) / 255,
-        b: parseInt(rgb[2]) / 255,
-        a: rgb.includes("rgba") ? parseInt(rgb[3]) : 1
-    };
-
-    let resultado = net.run(entrada);
-
-
-    color = `rgb(${255 * resultado.color}, ${255 * resultado.color}, ${255 * resultado.color})`;
-
-
-    return color;
-}
+const getTextColor = getColorRGB;
 
 
 //Start Components React
